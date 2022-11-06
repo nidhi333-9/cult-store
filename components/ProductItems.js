@@ -4,7 +4,7 @@ import React from "react";
 
 const ProductItems = ({ product }) => {
   return (
-    <div className="bg-slate-100">
+    <div className="card">
       <Link
         href={`/product/${product.slug}`}
         legacyBehavior
@@ -23,13 +23,13 @@ const ProductItems = ({ product }) => {
           legacyBehavior
         >
           <a>
-            <h2 className="text-lg">{product.name}</h2>
+            <h2 className="text-lg text-gray-800">{product.name}</h2>
           </a>
         </Link>
-        <p className="mb-2">{product.brand}</p>
-        <p className="font-semibold">$ {product.price}</p>
+        <p className="mb-2 text-gray-600">{product.brand}</p>
+        <p className="font-semibold text-gray-900">$ {product.price}</p>
         <button
-          className="bg-blue-500 text-white text-lg px-2 py-1 rounded-md"
+          className="primary-button"
           type="button"
         >
           Add to Cart
