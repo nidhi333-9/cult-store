@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 
 import React, { useEffect, useState } from "react";
+import Skeleton from "react-loading-skeleton";
+import Product from "./Product";
 // import axios from "axios";
 
 const Products = () => {
@@ -18,7 +20,7 @@ const Products = () => {
         setData(await response.clone().json());
         setFilter(await response.json());
         setLoading(false);
-        console.log(filter);
+        // console.log(filter);
       }
       return () => {
         componentMounted = false;
@@ -28,42 +30,69 @@ const Products = () => {
   }, []);
 
   const Loading = () => {
-    return <>Loading...</>;
+    return (
+      <>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+          <Skeleton height={350} />
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+          <Skeleton height={350} />
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+          <Skeleton height={350} />
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+          <Skeleton height={350} />
+        </div>
+      </>
+    );
   };
 
+  console.log(data);
+
+  const filterProduct = (cat) => {
+    const updatedList = data.filter((x) => x.category === cat);
+    setFilter(updatedList);
+  };
   const ShowProducts = () => {
     return (
       <>
-        <div className="mx-5">
-          <button className="primary-button mx-5">All</button>
-          <button className="primary-button mx-5">Men&apos;s Clothing</button>
-          <button className="primary-button mx-5">Women&apos;s Clothing</button>
-          <button className="primary-button mx-5">Jewellery</button>
+        <div className="flex justify-center mx-5">
+          <button
+            className="primary-button mx-5"
+            onClick={() => setFilter(data)}
+          >
+            All
+          </button>
+          <button
+            className="primary-button mx-5"
+            onClick={() => filterProduct("men's clothing")}
+          >
+            Men&apos;s Clothing
+          </button>
+          <button
+            className="primary-button mx-5"
+            onClick={() => filterProduct("women's clothing")}
+          >
+            Women&apos;s Clothing
+          </button>
+          <button
+            className="primary-button mx-5"
+            onClick={() => filterProduct("jewelery")}
+          >
+            Jewellery
+          </button>
         </div>
-        {filter?.map((product) => {
-          <div className="card">
-            <img
-              src={product.image}
-              alt={product.title}
-              width="auto"
-              height="auto"
-              className="rounded shadow"
-            />
-
-            <div className="flex flex-col items-center justify-center p-5">
-              <h2 className="text-lg text-gray-800">{product.title}</h2>
-
-              <p className="mb-2 text-gray-600">{product.description}</p>
-              <p className="font-semibold text-gray-900">$ {product.price}</p>
-              <button
-                className="primary-button"
-                type="button"
-              >
-                Add to Cart
-              </button>
-            </div>
-          </div>;
-        })}
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+          {filter.map((product) => {
+            return (
+              <Product
+                product={product}
+                key={product.id}
+              />
+            );
+          })}
+        </div>
       </>
     );
   };
@@ -76,9 +105,7 @@ const Products = () => {
             <hr />
           </div>
         </div>
-        <div className="flex flex-row justify-center">
-          {loading ? <Loading /> : <ShowProducts />}
-        </div>
+        <div>{loading ? <Loading /> : <ShowProducts />}</div>
       </div>
     </div>
   );
