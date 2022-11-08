@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import Layout from "../../components/Layout";
+// import Layout from "../../components/Layout";
 import data from "../../utils/data";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import Image from "next/image";
@@ -14,7 +14,7 @@ const ProductScreen = () => {
     return <div>Product Not Found</div>;
   }
   return (
-    <Layout title={product.name}>
+    <div title={product.name}>
       <div className="py-2">
         <Link
           href="/"
@@ -59,7 +59,7 @@ const ProductScreen = () => {
           <button className="primary-button w-full">Add to Cart</button>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 

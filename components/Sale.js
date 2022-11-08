@@ -5,7 +5,7 @@ import SaleImage from "../public/images/sale.jpg";
 const Sale = () => {
   return (
     <>
-      <div className="flex h-auto items-center justify-center space-x-14 p-10">
+      <div className="flex flex-col md:flex-row h-auto items-center justify-center space-x-14 space-y-14 p-10">
         <div>
           <Image
             src={SaleImage}

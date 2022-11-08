@@ -7,7 +7,7 @@ const Content = ({ item }) => {
     <div className="card relative">
       <div className="">
         <Link
-          href={`/item/${item.variety}`}
+          href="/men"
           legacyBehavior
         >
           <a>
