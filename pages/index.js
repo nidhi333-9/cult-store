@@ -1,12 +1,9 @@
 import Company from "../components/Company";
 import Link from "next/link";
 import Content from "../components/Content";
-// import HomePage from "../components/HomePage";
-// import Layout from "../components/Layout";
-// import ProductItems from "../components/ProductItems";
 import Products from "../components/Products";
 import Sale from "../components/Sale";
-import clothData from "../utils/cloth";
+// import clothData from "../utils/cloth";
 import Image from "next/image";
 import HeroImage from "../public/images/modelOne.png";
 // import data from "../utils/data";
@@ -46,13 +43,15 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {clothData.items.map((item) => (
+      <div className="">
+        {/* {clothData.items.map((item) => (
           <Content
             item={item}
             key={item.variety}
           ></Content>
-        ))}
+        ))} */}
+
+        <Content />
       </div>
 
       <div>

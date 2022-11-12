@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import React from "react";
 
 const Product = ({ product }) => {
@@ -6,13 +7,20 @@ const Product = ({ product }) => {
     <div>
       <div className="card text-center grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
         <div>
-          <img
-            src={product.image}
-            alt={product.title}
-            width="auto"
-            height={250}
-            className="rounded shadow h-60"
-          />
+          <Link
+            href={`/products/${product.products}`}
+            legacyBehavior
+          >
+            <a>
+              <img
+                src={product.image}
+                alt={product.title}
+                width="auto"
+                height={250}
+                className="rounded shadow h-60"
+              />
+            </a>
+          </Link>
         </div>
 
         <div className="flex flex-col items-center justify-center p-5">

@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import HeroImage from "../public/images/modelOne.png";
+// import Products from "./Products";
+import Link from "next/link";
 
 const HomePage = () => {
   return (
@@ -16,11 +18,13 @@ const HomePage = () => {
               est debitis esse ipsa, ipsum saepe nostrum cumque neque adipisci
               facilis voluptas laboriosam eligendi fugiat.
             </p>
-            <div className="mt-12 flex justify-start text-center">
-              <button className="bg-blue-500 py-2 px-10 text-white font-semibold text-lg  border-none rounded-md hover:bg-blue-600 active:bg-blue-700">
-                View Collection
-              </button>
-            </div>
+            <Link href="/Products">
+              <div className="mt-12 flex justify-start text-center">
+                <button className="bg-blue-500 py-2 px-10 text-white font-semibold text-lg  border-none rounded-md hover:bg-blue-600 active:bg-blue-700">
+                  View Collection
+                </button>
+              </div>
+            </Link>
           </div>
           <div className="hidden md:block">
             <Image
