@@ -1,45 +1,47 @@
-/* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
+// import Image from "next/image";
 import React from "react";
+import { AiFillStar } from "react-icons/ai";
+import { useState } from "react";
 
-const Product = ({ product }) => {
+function Product({ id, title, price, description, category, image }) {
+  const [rating] = useState(Math.floor(Math.random() * 5) + 1);
   return (
-    <div>
-      <div className="card text-center grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-        <div>
-          <Link
-            href={`/products/${product.products}`}
-            legacyBehavior
-          >
-            <a>
-              <img
-                src={product.image}
-                alt={product.title}
-                width="auto"
-                height={250}
-                className="rounded shadow h-60"
-              />
-            </a>
-          </Link>
-        </div>
+    <div className=" card relative flex flex-col border m-5 z-30 p-10 bg-white">
+      <p className="absolute top-2 right-2 text-xs italic text-gray-400">
+        {category}
+      </p>
+      <div className="flex justify-center">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={image}
+          alt={title}
+          width="auto"
+          height={250}
+          className="rounded shadow h-60"
+        />
+      </div>
 
-        <div className="flex flex-col items-center justify-center p-5">
-          <h2 className="text-lg text-gray-800">
-            {product.title.substring(0, 12)}
-          </h2>
+      <h4 className="my-3">{title.substring(0, 12)}</h4>
+      <div className="flex">
+        {Array(rating)
+          .fill()
+          .map((_, i) => (
+            <AiFillStar
+              key={i}
+              className="text-blue-500"
+            />
+          ))}
+      </div>
+      <div>
+        <p className="line-clamp-2"> {description}</p>
+      </div>
 
-          {/* <p className="mb-2 text-gray-600">{product.description}</p> */}
-          <p className="font-semibold text-gray-900">$ {product.price}</p>
-          <button
-            className="primary-button"
-            type="button"
-          >
-            Add to Cart
-          </button>
-        </div>
+      <div>
+        <p className="mb-5 font-bold">${price}</p>
+        <button className="primary-button w-full">Add to Cart</button>
       </div>
     </div>
   );
-};
+}
 
 export default Product;

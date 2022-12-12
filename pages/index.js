@@ -1,83 +1,26 @@
-import Company from "../components/Company";
-import Link from "next/link";
-import Content from "../components/Content";
-import Products from "../components/Products";
-import Sale from "../components/Sale";
-// import clothData from "../utils/cloth";
-import Image from "next/image";
-import HeroImage from "../public/images/modelOne.png";
-// import data from "../utils/data";
+import Banner from "../components/Banner";
 
-export default function Home() {
+import ProductFeed from "../components/ProductFeed";
+
+export default function Home({ products }) {
   return (
     <div>
-      <div>
-        {/* <HomePage /> */}
-        <div className="w-fit pb-14">
-          <div className="flex h-auto items-center justify-center p-10">
-            <div className="md:w-1/2">
-              <h1 className="my-5 text-5xl font-bold text-gray-800 md:text-7xl">
-                New Collection
-              </h1>
-              <p className="text-base text-gray-500 md:text-xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
-                illo est debitis esse ipsa, ipsum saepe nostrum cumque neque
-                adipisci facilis voluptas laboriosam eligendi fugiat.
-              </p>
-              <Link href="/products">
-                <div className="mt-12 flex justify-start text-center">
-                  <button className="bg-blue-500 py-2 px-10 text-white font-semibold text-lg  border-none rounded-md hover:bg-blue-600 active:bg-blue-700">
-                    View Collection
-                  </button>
-                </div>
-              </Link>
-            </div>
-            <div className="hidden md:block">
-              <Image
-                src={HeroImage}
-                width={350}
-                height={800}
-                alt="HeroImage"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="">
-        {/* {clothData.items.map((item) => (
-          <Content
-            item={item}
-            key={item.variety}
-          ></Content>
-        ))} */}
-
-        <Content />
-      </div>
-
-      <div>
-        <Sale />
-      </div>
-
-      <div>
-        <h3 className="flex justify-center font-bold text-3xl py-14 text-gray-900">
-          Our Popular Products
-        </h3>
-        <Products />
-      </div>
-      <div className="py-5">
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-          {/* {data.products.map((product) => (
-            <ProductItems
-              product={product}
-              key={product.slug}
-            ></ProductItems>
-          ))} */}
-        </div>
-      </div>
-
-      <div>
-        <Company />
-      </div>
+      <main className="max-w-screen-2xl mx-auto">
+        <Banner />
+        <ProductFeed products={products} />
+      </main>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const products = await fetch("https://fakestoreapi.com/products").then(
+    (res) => res.json()
+  );
+
+  return {
+    props: {
+      products,
+    },
+  };
 }

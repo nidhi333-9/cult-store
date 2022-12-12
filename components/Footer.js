@@ -8,7 +8,7 @@ const Footer = () => {
   // year.textContent = thisYear;
   return (
     <>
-      <div className="flex flex-col justify-center items-center p-14">
+      <div className="flex flex-col justify-center items-center p-14 bg-slate-700">
         <Link
           href="/"
           legacyBehavior
