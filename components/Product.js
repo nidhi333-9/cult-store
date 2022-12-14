@@ -2,9 +2,24 @@
 import React from "react";
 import { AiFillStar } from "react-icons/ai";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../slices/cartSlice";
 
 function Product({ id, title, price, description, category, image }) {
   const [rating] = useState(Math.floor(Math.random() * 5) + 1);
+  const dispatch = useDispatch();
+  const addItemToCart = () => {
+    const product = {
+      id,
+      title,
+      price,
+      description,
+      category,
+      image,
+    };
+
+    dispatch(addToCart(product));
+  };
   return (
     <div
       className=" card relative flex flex-col border m-5 z-30 p-10 bg-white"
@@ -37,11 +52,16 @@ function Product({ id, title, price, description, category, image }) {
       </div>
       <div>
         <p className="line-clamp-2"> {description}</p>
+        <p className="mb-5 font-bold">${price}</p>
       </div>
 
       <div>
-        <p className="mb-5 font-bold">${price}</p>
-        <button className="primary-button w-full">Add to Cart</button>
+        <button
+          onClick={addItemToCart}
+          className="primary-button w-full"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
   );

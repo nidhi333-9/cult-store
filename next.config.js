@@ -1,6 +1,9 @@
 module.exports = {
+  experimental: {
+    externalDir: true,
+  },
   reactStrictMode: true,
   images: {
-    domains: ["fakestoreapi.com"],
+    domains: ["fakestoreapi.com", "links.papareact.com"],
   },
 };
