@@ -35,7 +35,7 @@ function Product({ id, title, price, description, category, image }) {
           alt={title}
           width="auto"
           height={250}
-          className="rounded shadow h-60"
+          className="rounded shadow h-60 "
         />
       </div>
 
@@ -50,19 +50,19 @@ function Product({ id, title, price, description, category, image }) {
             />
           ))}
       </div>
-      <div>
-        <p className="line-clamp-2"> {description}</p>
-        <p className="mb-5 font-bold">${price}</p>
-      </div>
+      {/* <div> */}
+      <p className="line-clamp-2"> {description}</p>
+      <p className="mb-5 font-bold">${price}</p>
+      {/* </div> */}
 
-      <div>
-        <button
-          onClick={addItemToCart}
-          className="primary-button w-full"
-        >
-          Add to Cart
-        </button>
-      </div>
+      {/* <div> */}
+      <button
+        onClick={addItemToCart}
+        className="primary-button w-full"
+      >
+        Add to Cart
+      </button>
+      {/* </div> */}
     </div>
   );
 }

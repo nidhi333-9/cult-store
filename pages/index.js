@@ -4,12 +4,12 @@ import ProductFeed from "../components/ProductFeed";
 
 export default function Home({ products }) {
   return (
-    <div>
-      <main className="max-w-screen-2xl mx-auto">
+    <>
+      <main>
         <Banner />
         <ProductFeed products={products} />
       </main>
-    </div>
+    </>
   );
 }
 
