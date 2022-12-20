@@ -22,7 +22,7 @@ function Product({ id, title, price, description, category, image }) {
   };
   return (
     <div
-      className=" card relative flex flex-col border z-30 p-10 bg-white"
+      className=" card mx-auto relative flex flex-col border z-30 p-10 bg-white md:m-5"
       key={id}
     >
       <p className="absolute top-2 right-2 text-xs italic text-gray-400">
