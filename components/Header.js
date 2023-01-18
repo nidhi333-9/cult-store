@@ -1,4 +1,4 @@
-import { HiOutlineShoppingCart, HiOutlineSearch } from "react-icons/hi";
+import { HiOutlineShoppingCart } from "react-icons/hi";
 import { signIn, useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
@@ -18,13 +18,13 @@ function Header() {
           Cult Store
         </p>
 
-        <div className="hidden sm:flex h-10 justify-between items-center bg-blue-500 hover:bg-blue-600 rounded-md flex-grow">
+        {/* <div className="hidden sm:flex h-10 justify-between items-center bg-blue-500 hover:bg-blue-600 rounded-md flex-grow">
           <input
             type="text"
             className="p-2 h-full w-6 flex-grow flex-shrink rounded-l-md"
           />
           <HiOutlineSearch className="text-2xl text-white" />
-        </div>
+        </div> */}
         <div className="relative flex justify-between items-center hover:cursor-pointer">
           <div onClick={!session ? signIn : signOut}>
             <p className="p-3 text-lg text-slate-600">
