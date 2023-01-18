@@ -15,7 +15,7 @@ function Success() {
       <h3 className="px-3 text-xl">Your order has been confirmed! 🥳</h3>
       <button
         onClick={() => router.push("/")}
-        className="primary-button"
+        className="primary-button mx-3 my-5"
       >
         Go to Home Page
       </button>
