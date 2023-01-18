@@ -7,7 +7,7 @@ import CheckoutProduct from "../components/CheckoutProduct";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 
-const stripePromise = loadStripe(process.env.stripe_public_key);
+const stripePromise = loadStripe(`${process.env.stripe_public_key}`);
 
 function Checkout() {
   const items = useSelector(selectItems);
