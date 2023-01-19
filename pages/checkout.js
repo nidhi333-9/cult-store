@@ -73,6 +73,7 @@ function Checkout() {
               </h2>
 
               <button
+                type="button"
                 role="link"
                 onClick={createCheckoutSession}
                 disabled={!session}
